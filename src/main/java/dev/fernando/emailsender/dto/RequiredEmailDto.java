@@ -1,9 +1,8 @@
 package dev.fernando.emailsender.dto;
 
 public record RequiredEmailDto(
-        String email,
+        String emailTo,
         String name,
         String subject,
         String text
-) {
-}
+){}

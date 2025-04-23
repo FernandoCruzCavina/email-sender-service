@@ -23,7 +23,7 @@ public class EmailService {
     public void sendEmail(RequiredEmailDto requiredEmailDto) {
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(requiredEmailDto.email());
+        message.setTo(requiredEmailDto.emailTo());
         message.setFrom(emailFrom);
         message.setSubject(requiredEmailDto.subject());
         message.setText(requiredEmailDto.text());

@@ -1,5 +1,6 @@
 package dev.fernando.emailsender.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class LavinMQConfig {
-    public String QUEUE_NAME = "default.user";
+
+    @Value("${broker.queue.email.sender}")
+    public String QUEUE_NAME;
 
     @Bean
     public Queue queue() {
@@ -18,7 +21,8 @@ public class LavinMQConfig {
     @Bean
     public Jackson2JsonMessageConverter objectMapper(){
 
-        return new Jackson2JsonMessageConverter();
+        ObjectMapper objectMapper = new ObjectMapper();
+        return new Jackson2JsonMessageConverter(objectMapper);
     }
 
 }
