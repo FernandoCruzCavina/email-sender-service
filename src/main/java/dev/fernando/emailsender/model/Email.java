@@ -1,4 +1,4 @@
-package dev.fernando.emailsender.entity;
+package dev.fernando.emailsender.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class Email {
 
     private String email_to;
-    private String name;
     private String subject;
     private String text;
 }

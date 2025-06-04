@@ -11,11 +11,25 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitmqConfig {
 
     @Value("${broker.queue.email.sender}")
-    public String QUEUE_NAME;
+    public String emailQueue;
+
+    @Value("${broker.queue.account.email.sender}")
+    private String emailLinkedInfoQueue;
+
+    @Value("${broker.queue.account.creation}")
+    private String accountCreationQueue;
 
     @Bean
-    public Queue queue() {
-        return new Queue(QUEUE_NAME, true);
+    public Queue emailQueue() {
+        return new Queue(emailQueue, true);
+    }
+
+    @Bean
+    public Queue emailLinkedInfoQueue(){
+        return new Queue(emailLinkedInfoQueue, true);
+    }
+    @Bean Queue accountCreationQueue(){
+        return new Queue(accountCreationQueue, true);
     }
 
     @Bean
