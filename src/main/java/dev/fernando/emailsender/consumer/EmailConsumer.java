@@ -25,6 +25,7 @@ public class EmailConsumer {
 
     @RabbitListener(queues = "${broker.queue.email.sender}")
     public void sendEmailWithEmail(@Payload RequiredEmailDto requiredEmailDto) {
+        System.out.println(requiredEmailDto.emailTo());
         emailService.sendEmail(requiredEmailDto);
     }
 
